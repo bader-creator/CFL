@@ -1,0 +1,94 @@
+.banner {
+  height: 180px;
+  position: relative;
+  z-index: 1;
+  background: url('../../assets/icon/home/header.png') center center no-repeat;
+  background-size: cover;
+}
+
+ion-content {
+  --background: ghostwhite;
+}
+.info ion-badge {
+  font-size: 16px;
+  font-family: fantasy;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.info ion-label{
+  font-size: 20px;
+  color: #131f51;
+  font-family: fantasy;
+  position: absolute;
+  margin-top: -11px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.profile {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.container-fluid{
+  padding-right: 35px;
+  margin-top: 120px;
+}
+
+.content-profile {
+  position: relative;
+}
+
+
+
+.profile-img {
+  width: 90px;
+  height: 85px;
+  margin-top: 96px;
+}
+.info{
+  position: relative;
+  top: 200px;
+}
+
+.left {
+  background: #e2e2ea;
+  box-shadow: 0px 10px 8px rgb(100 100 100 / 25%);
+  border-radius: 28px;
+  width: 100%;
+  position: relative;
+}
+
+.right {
+  background: #e2e2ea;
+  box-shadow: 0px 10px 8px rgb(100 100 100 / 25%);
+  border-radius: 28px;
+  width: 100%;
+  position: relative;
+}
+ion-card-title {
+  color: #25368c;
+  font-family: "Roboto Condensed";
+  font-weight: 700;
+  line-height: 3px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 40px;
+
+}
+
+ion-card-subtitle{
+  text-align: center;
+}
+ion-card-subtitle ion-icon {
+  color: #25368c;
+  font-size: 40px;
+}
+

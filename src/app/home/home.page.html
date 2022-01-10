@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title style="color:white;
+      font-family: Roboto;
+      font-weight: 700;
+      line-height: 58px;
+      text-align: center;
+      margin-left: 55px;">
+      Accueil
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="solid" style="font-size: 18px;" (click)="logout()" color="secondary">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="banner" style="height:140px;">
+    <div class="profile">
+      <div class="content-profile">
+        <img src="{{env}}{{User?.path || 'empty.png'}}"
+          class="profile-img shadow-lg img-fluid z-depth-1 rounded-circle">
+      </div>
+    </div>
+    <div class="info">
+      <ion-label>{{this?.User?.lastName}} {{this?.User?.firstName}}</ion-label><br>
+      <ion-badge color="primary">{{this?.User?.groupe}}</ion-badge>
+    </div>
+
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <ion-card class="left" [routerLink]="'/wagon'" routerDirection="forward">
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="train"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>Wagon</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ion-card class="right" [routerLink]="'/alarm'" routerDirection="forward">
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="notifications"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>Alarme</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer no-padding no-marging>
+
+  <ion-segment no-padding no-marging [(ngModel)]="segment">
+
+
+    <ion-segment-button value="wagon" checked [routerLink]="'/wagon'" routerDirection="forward">
+      <ion-icon size="small" name="train" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+
+    <ion-segment-button value="alarme" (click)="presentConfirm()" [routerLink]="'/alarm'" routerDirection="forward">
+      <ion-icon size="small" name="notifications" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+  </ion-segment>
+
+</ion-footer>

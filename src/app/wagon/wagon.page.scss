@@ -1,0 +1,27 @@
+ion-card{
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 15px;
+}
+.col-6 ion-label{
+    color: black;
+    line-height: 35px;
+    font-size: 15px;
+}
+.col-12 ion-label{
+    line-height: 35px;
+    font-size: 15px;
+    margin-left: -5px;
+}
+.col-12 ion-icon{
+    font-size: 18px;
+    margin: 0px 6px -3px 0px;
+    color: black;
+    font-weight: 450;
+}
+.col-6 ion-icon{
+    font-size: 18px;
+    margin: 0px 6px -3px 0px;
+    color: black;
+    font-weight: 450;
+}

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title style="color:white;font-family: Roboto;
+      font-weight: 700;
+      line-height: 58px;
+      text-align: center;margin-right: -65px;">
+      Alarme
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="solid" style="font-size: 18px;" [routerLink]="'/home'" routerDirection="forward"
+        color="secondary">
+        <ion-icon slot="start" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-searchbar (ionBlur)="closesitem($event)" (ionChange)="closesitem($event)" (ionFocus)="closesitem($event)">
+    </ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="light">
+        <ion-icon name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ng-container *ngFor="let alert of Alerts">
+    <ion-card (click)="GoesToDetail(alert)">
+      <div class="row">
+        <div class="col-2">
+          <ion-thumbnail slot="start">
+            <img src=" ../../../../assets/icon/alarme/critique.png">
+          </ion-thumbnail>
+        </div>
+        <div class="col-10">
+          <ion-label>{{alert.alert.label}}</ion-label><br>
+          <ion-icon name="time"></ion-icon>
+          <ion-label>{{alert.createdAt.date | date: 'dd-MM-yyyy HH:mm' }}</ion-label>
+        </div>
+      </div>
+    </ion-card>
+  </ng-container>
+</ion-content>
+
+<ion-footer no-padding no-marging>
+
+  <ion-segment no-padding no-marging [(ngModel)]="segment">
+
+
+    <ion-segment-button value="wagon" checked [routerLink]="'/wagon'" routerDirection="forward">
+      <ion-icon size="small" name="train" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+
+    <ion-segment-button value="alarm" [routerLink]="'/alarm'" routerDirection="forward">
+      <ion-icon size="small" name="notifications" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+  </ion-segment>
+
+</ion-footer>

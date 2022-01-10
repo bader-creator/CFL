@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1046523744611",
+    "firebase_url": "https://energy-tracker.firebaseio.com",
+    "project_id": "energy-tracker-9f165",
+    "storage_bucket": "energy-tracker-9f165.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046523744611:android:ebd063e3b87b82ea4fc356",
+        "android_client_info": {
+          "package_name": "com.company.cfl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046523744611-f7926le9oq1gvcgf8kqbt91i723qjhen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo0QRvLaieLUKJYcRO8MwI_Q-IcxMNaWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046523744611-f7926le9oq1gvcgf8kqbt91i723qjhen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

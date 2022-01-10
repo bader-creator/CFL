@@ -1,0 +1,7 @@
+{
+  "name": "Environment",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

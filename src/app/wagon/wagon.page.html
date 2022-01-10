@@ -1,0 +1,246 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title style="color:white;font-family: Roboto;
+      font-weight: 700;
+      line-height: 58px;
+      text-align: center;margin-right: -65px;">
+      Wagon
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="solid" style="font-size: 18px;" [routerLink]="'/home'" routerDirection="forward"
+        color="secondary">
+        <ion-icon slot="start" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="medium">
+    <ion-searchbar (ionBlur)="closesitem($event)" (ionChange)="closesitem($event)" (ionFocus)="closesitem($event)">
+    </ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="light">
+        <ion-icon name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ng-container *ngFor="let w of Wagon">
+      <ion-card>
+        <ion-card-content>
+          <div class="row" style=" margin-left: -32px;">
+            <div class="col-6">
+              <ion-icon slot="start" name="train"></ion-icon>
+              <ion-label>Nom :</ion-label>
+            </div>
+            <div class="col-6">
+              <ion-label>{{w.name}}</ion-label>
+            </div>
+          </div>
+          <div class="row" style=" margin-left: -32px;">
+            <div class="col-6">
+              <ion-icon slot="start" name="barcode"></ion-icon>
+              <ion-label>Nº Serie :</ion-label>
+            </div>
+            <div class="col-6">
+              <ion-label>{{w.numeroSerie}}</ion-label>
+            </div>
+          </div>
+          <ng-container *ngIf="w.Boxes['0']">
+            <div class="row">
+              <div class="col-6" style="margin-left: -5px;">
+                <ng-container *ngIf="w.Boxes['0'].devices.mesures['0']">
+                  <ng-container *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==4 || w.Boxes['0'].devices.mesures['0'].valeur1==8">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" width="24px" height="24px"
+                      style="
+              height: 26px;
+              width: 26px;
+              margin: 8px 0px 8px -18px;">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                      </path>
+                    </svg>
+                  </ng-container>
+                  <ng-container  *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==2 || w.Boxes['0'].devices.mesures['0'].valeur1==5 || w.Boxes['0'].devices.mesures['0'].valeur1==6 || w.Boxes['0'].devices.mesures['0'].valeur1==7" >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="24px" height="24px"
+                      style="
+            height: 26px;
+            width: 26px;
+            margin: 8px 0px 8px -18px;">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                      </path>
+                    </svg>
+                  </ng-container>
+                  <ng-container *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==1 || w.Boxes['0'].devices.mesures['0'].valeur1==3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" width="24px" height="24px"
+                      style="
+                              height: 26px;
+                              width: 26px;
+                              margin: 8px 0px 8px -18px;">
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                      </path>
+                    </svg>
+                  </ng-container>
+                </ng-container>
+                
+                <ion-label>{{w.Boxes['0'].name}}</ion-label>
+              </div>
+              <div class="col-6">
+                <ion-label>{{w.Boxes['0'].reference}}</ion-label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-12" style="margin-left: -20px;">
+
+                <ng-container *ngIf="w.Boxes['0'].devices.mesures['0']">
+                  <ion-icon name="information-circle"></ion-icon>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==1" style="color: gray;">
+                    Pas de chargement
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==4" style="color: red;">
+                    King pin placée, mais manette ouverte et remorque non détectée
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==3" style="color: gray;">
+                    Pas de chargement, manette fermée
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==4" style="color: green;">
+                    Remorque chargée correctement, mais non détecter par L'ultrsason
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==5" style="color: red;">
+                    Remorque détectée, Mais manette ouverte et king pin non placé
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==6" style="color: red;">
+                    Remorque placé, Mais manette ouverte
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==7" style="color: red;">
+                    Remorque détecté , Mais kinpin non placé
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['0'].devices.mesures['0'].valeur1==8" style="color: green;">
+                    Remorque chargé correctement
+                  </ion-label>
+                </ng-container>
+
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="w.Boxes['1']">
+            <div class="row">
+
+              <div class="col-6" style="margin-left: -5px;">
+                <ng-container *ngIf="w.Boxes['1'].devices.mesures['0']">
+                    <ng-container
+                      *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==4 || w.Boxes['1'].devices.mesures['0'].valeur1==8">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" width="24px" height="24px"
+                        style="
+              height: 26px;
+              width: 26px;
+              margin: 8px 0px 8px -18px;">
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                          d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                        </path>
+                      </svg>
+                    </ng-container>
+                    <ng-container
+                      *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==2 || w.Boxes['1'].devices.mesures['0'].valeur1==5 || w.Boxes['1'].devices.mesures['0'].valeur1==6 || w.Boxes['1'].devices.mesures['0'].valeur1==7 ">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="24px" height="24px"
+                        style="
+                height: 26px;
+                width: 26px;
+                margin: 8px 0px 8px -18px;">
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                          d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                        </path>
+                      </svg>
+                    </ng-container>
+                    <ng-container *ngIf="w.Boxes['1'].devices.mesures['0']==1 || w.Boxes['1'].devices.mesures['0']==3">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray" width="24px" height="24px"
+                        style="
+            height: 26px;
+            width: 26px;
+            margin: 8px 0px 8px -18px;">
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                          d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z">
+                        </path>
+                      </svg>
+                    </ng-container>
+                </ng-container>
+               
+                <ion-label>{{w.Boxes['1'].name}}</ion-label>
+              </div>
+              <div class="col-6">
+                <ion-label>{{w.Boxes['1'].reference}}</ion-label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-12"  style="margin-left: -20px;">
+                <ng-container *ngIf="w.Boxes['1'].devices.mesures['0']">
+                  <ion-icon name="information-circle"></ion-icon>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==1" style="color: gray;">
+                    Pas de chargement
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==4" style="color: red;">
+                    King pin placée, mais manette ouverte et remorque non détectée
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==3" style="color: gray;">
+                    Pas de chargement, manette fermée
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==4" style="color: green;">
+                    Remorque chargée correctement, mais non détecter par L'ultrsason
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==5" style="color: red;">
+                    Remorque détectée, Mais manette ouverte et king pin non placé
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==6" style="color: red;">
+                    Remorque placé, Mais manette ouverte
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==7" style="color: red;">
+                    Remorque détecté , Mais kinpin non placé
+                  </ion-label>
+                  <ion-label *ngIf="w.Boxes['1'].devices.mesures['0'].valeur1==8" style="color: green;">
+                    Remorque chargé correctement
+                  </ion-label>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ion-card-content>
+      </ion-card>
+
+    </ng-container>
+  </ion-list>
+</ion-content>
+<ion-footer no-padding no-marging>
+
+  <ion-segment no-padding no-marging [(ngModel)]="segment">
+
+
+    <ion-segment-button value="wagon" checked [routerLink]="'/wagon'" routerDirection="forward">
+      <ion-icon size="small" name="train" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+
+    <ion-segment-button value="alarm" [routerLink]="'/alarm'" routerDirection="forward">
+      <ion-icon size="small" name="notifications" style="margin-top: 0px;color: white;"></ion-icon>
+    </ion-segment-button>
+
+
+  </ion-segment>
+
+</ion-footer>
